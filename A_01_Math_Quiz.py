@@ -1,6 +1,5 @@
 import random
 
-
 # Check if users enter yes (y) or no (n)
 def yes_no(question):
     while True:
@@ -11,7 +10,6 @@ def yes_no(question):
             return "no"
         else:
             print("Please enter yes (y) or no (n)")
-
 
 def instruction():
     print('''\
@@ -24,13 +22,13 @@ however, if your answer is wrong, you will lose a point.
 Good Luck!
     ''')
 
-
 def math_quiz(num_questions):
     score = 0
-    game_history = []  # To store the history of questions and answers
 
     print("WELCOME TO MATH QUIZ!!!")
+    print()
     user_name = input("Please enter your name: ")
+    print()
     print(f"Welcome to the Math Quiz, {user_name}!")
 
     round_number = 0  # Initialize round_number
@@ -48,7 +46,7 @@ def math_quiz(num_questions):
             if answer.lower() == 'exit':
                 print("You chose to exit the quiz.")
                 print(f"{user_name}, you scored {score} out of {round_number - 1}.")
-                return score, game_history  # Return score and history when exiting
+                return score  # Return only score when exiting
 
             try:
                 answer = int(answer)
@@ -61,7 +59,6 @@ def math_quiz(num_questions):
 
         # Check if the answer is correct
         correct_answer = num1 + num2
-        game_history.append((num1, num2, answer, correct_answer))  # Store the question and answer
 
         if answer == correct_answer:
             print("Correct!")
@@ -77,15 +74,14 @@ def math_quiz(num_questions):
             break
 
     print(f"\n{user_name}, you scored {score} out of {round_number}.")
-
-    return score, game_history  # Return score and history
-
+    return score  # Return only score
 
 # Main Routine
 want_instructions = yes_no("Do you want to read the instructions? ")
 
 if want_instructions == "yes":
     instruction()
+print()
 
 # Ask user for the number of rounds
 while True:
@@ -103,12 +99,8 @@ while True:
     else:
         print("Please enter a valid number or press Enter for infinite.")
 
-# Start the quiz and capture score and game history
-final_score, quiz_history = math_quiz(num_questions)
+# Start the quiz and capture score
+final_score = math_quiz(num_questions)
 
-# Ask if the user wants to see the game history after exiting the quiz
-if yes_no("Do you want to see your quiz history? (yes/no) ") == "yes":
-    print("\n--- Quiz History ---")
-    for num1, num2, answer, correct_answer in quiz_history:
-        result = "Correct" if answer == correct_answer else "Wrong"
-        print(f"{num1} + {num2} = {answer} ({result}, correct answer was {correct_answer})")
+# Final score display
+print(f"You finished with a score of {final_score}.")
