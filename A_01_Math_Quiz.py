@@ -1,5 +1,6 @@
 import random
 
+
 # Check if users enter yes (y) or no (n)
 def yes_no(question):
     while True:
@@ -11,6 +12,7 @@ def yes_no(question):
         else:
             print("Please enter yes (y) or no (n)")
 
+
 def instruction():
     print('''\
 **** Instructions ****
@@ -21,6 +23,7 @@ however, if your answer is wrong, you will lose a point.
 
 Good Luck!
     ''')
+
 
 def math_quiz(num_questions):
     score = 0
@@ -39,6 +42,7 @@ def math_quiz(num_questions):
         num2 = random.randint(0, 100)
 
         while True:
+            print()
             answer = input(f"Question {round_number}: What is {num1} + {num2}? (Type 'exit' to quit) ")
 
             if answer.lower() == 'exit':
@@ -75,6 +79,7 @@ def math_quiz(num_questions):
     print(f"\n{user_name}, you scored {score} out of {round_number}.")
 
     return score, game_history  # Return score and history
+
 
 # Main Routine
 want_instructions = yes_no("Do you want to read the instructions? ")
